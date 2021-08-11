@@ -54,7 +54,7 @@ class Auth extends Component {
               value={password}
               className="user-input"
               required
-              placeholder="Qwerty123"
+              placeholder="AbraCadabra555"
               autoComplete="on"
             />
             <svg className="icon-user">

@@ -20,7 +20,7 @@ export const mainRoutes = [
   },
   //private
   {
-    name: "ContactsPage",
+    name: "Phonebook",
     path: "/contacts",
     component: lazy(() => import("../pages/ContactsPage") /* webpackChunkName: "ContactsPage" */),
     exact: true,
@@ -29,7 +29,7 @@ export const mainRoutes = [
   },
   //restricted
   {
-    name: "Registration",
+    name: "Sign Up",
     path: "/signup",
     component: lazy(() => import("../pages/AuthPage") /* webpackChunkName: "AuthPage" */),
     exact: true,
@@ -37,7 +37,7 @@ export const mainRoutes = [
     restricted: true,
   },
   {
-    name: "Login",
+    name: "Sign In",
     path: "/signin",
     component: lazy(() => import("../pages/AuthPage") /* webpackChunkName: "AuthPage" */),
     exact: true,

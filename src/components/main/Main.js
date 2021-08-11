@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { Switch } from "react-router-dom";
+import { authorizedUser } from "../../redux/auth/authSelectors";
 import { mainRoutes } from "../../routes/mainRoutes";
 import PrivateRoute from "../../routes/PrivateRoute";
 import PublicRoute from "../../routes/PublicRoute";
@@ -26,7 +27,7 @@ const Main = ({ isAuth }) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth?.idToken,
+    isAuth: authorizedUser(state),
   };
 };
 export default connect(mapStateToProps)(Main);

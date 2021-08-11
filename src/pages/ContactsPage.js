@@ -7,7 +7,6 @@ import Section from "../components/section/Section";
 const ContactsPage = () => {
   return (
     <>
-      <h2>ContactsPage</h2>
       <Section title="Phonebook">
         <ContactForm />
       </Section>

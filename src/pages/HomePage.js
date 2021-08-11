@@ -1,7 +1,25 @@
 import React from "react";
 
+const styles = {
+  container: {
+    minHeight: "calc(100vh - 50px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontWeight: 500,
+    fontSize: 48,
+    textAlign: "center",
+  },
+};
+
 const HomePage = () => {
-  return <h1>Phonebook application</h1>;
+  return (
+    <div style={styles.container}>
+      <h1>Welcome to Simply the Best Phonebook application!</h1>
+    </div>
+  );
 };
 
 export default HomePage;

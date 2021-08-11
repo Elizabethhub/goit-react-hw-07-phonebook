@@ -12,7 +12,7 @@ export const AuthContainer = styled.div`
   .user-label {
     position: relative;
     margin-bottom: 8px;
-    /* padding-top: 8px; */
+    padding-top: 6px;
   }
   .user-input {
     height: 30px;
@@ -21,6 +21,7 @@ export const AuthContainer = styled.div`
     padding-left: 8px;
     height: 30px;
     border: 1px solid cornflowerblue;
+    border-radius: 5px;
   }
   .user-input:focus + .icon-user,
   .user-input:not(:placeholder-shown) + .icon-user {
@@ -40,8 +41,8 @@ export const AuthContainer = styled.div`
   }
   .icon-user {
     position: absolute;
-    bottom: 20px;
-    left: 16px;
+    bottom: 10px;
+    left: 14px;
     width: 12px;
     height: 12px;
     fill: cornflowerblue;

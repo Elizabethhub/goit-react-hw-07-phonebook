@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signOut } from "../../redux/auth/authActions";
+import { authorizedUser } from "../../redux/auth/authSelectors";
 import { mainRoutes } from "../../routes/mainRoutes";
 import NavigationListItem from "./NavigationListItem";
 import { NavigationContainer } from "./NavigationStyled";
@@ -24,7 +25,7 @@ const Navigation = ({ isAuth, signOut }) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth?.idToken, //false "" || true "ghjg"
+    isAuth: authorizedUser(state),
   };
 };
 
