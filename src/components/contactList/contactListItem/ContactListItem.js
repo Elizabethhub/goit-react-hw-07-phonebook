@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ContactListItemStyled } from "./ContactListItemStyled";
+import { Delete } from "@material-ui/icons";
 
 const ContactListItem = ({ name, number, id, onDeleteContact }) => {
   const onDeleteItem = () => {
@@ -14,7 +15,7 @@ const ContactListItem = ({ name, number, id, onDeleteContact }) => {
         <span>: </span>
         {number}
         <button className="btnDelete" type="button" onClick={onDeleteItem}>
-          Delete
+          <Delete color="disabled" fontSize="small" style={{ color: "darkred" }} />
         </button>
       </li>
     </ContactListItemStyled>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getContacts } from "../../redux/contacts/contactSelectors";
 import { addContact, fetchContacts } from "../../redux/contacts/contactsOperations";
 import { ContactFormStyled } from "./ContactFormStyled";
+import AccessibilityNewIcon from "@material-ui/icons/AccessibilityNew";
 
 class ContactForm extends Component {
   state = { name: "", number: "" };
@@ -40,6 +41,7 @@ class ContactForm extends Component {
       <ContactFormStyled>
         <form onSubmit={this.onHandleSubmit}>
           <label>
+            <AccessibilityNewIcon fontSize="small" style={{ color: "green" }} />
             Name
             <input
               value={this.state.name}

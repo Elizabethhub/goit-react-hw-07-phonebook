@@ -2,7 +2,7 @@ import axios from "axios";
 const API_KEY = "AIzaSyB_JpT834A0PunyVmEpcWWSkqqSL-_OpXM";
 const register_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`;
 const login_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
-const baseURL = `https://phonebook-5b0f2-default-rtdb.firebaseio.com`;
+// const baseURL = `https://phonebook-5b0f2-default-rtdb.firebaseio.com`;
 
 const register = async (user) => {
   try {
@@ -10,10 +10,13 @@ const register = async (user) => {
       ...user,
       returnSecureToken: true,
     });
-    const addUserToDB = await axios.post(baseURL + "/phonebookUsers.json", {
-      email: user.email,
-    });
-    return { registerData: response.data, id: addUserToDB.data.name };
+    // const addUserToDB = await axios.post(baseURL + "/phonebookUsers.json", {
+    //   email: user.email,
+    // });
+    return {
+      registerData: response.data,
+      // id: addUserToDB.data.name
+    };
   } catch (error) {
     console.log(error);
   }

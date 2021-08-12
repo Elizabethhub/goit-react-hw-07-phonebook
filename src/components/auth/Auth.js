@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginUserOperation, registerUserOperation } from "../../redux/auth/authOperation";
 import { AuthContainer } from "./AuthStyled";
-import sprite from "../../icons/sprite.svg";
+import sprite from "../../images/icons/sprite.svg";
 import { withRouter } from "react-router-dom";
 
 class Auth extends Component {

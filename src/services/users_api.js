@@ -17,7 +17,7 @@ export const getUsers = async () => {
 
 export const addUser = async (user) => {
   try {
-    const response = await axios.post(baseURL + "/phonebookUsers.json", user);
+    const response = await axios.post(baseURL + "/users.json", user);
     return response.data;
   } catch (error) {
     throw new Error(error);

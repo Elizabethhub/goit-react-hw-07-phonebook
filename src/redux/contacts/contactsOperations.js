@@ -11,33 +11,42 @@ import {
   getContactError,
 } from "./contactActions";
 
-axios.defaults.baseURL = "https://phonebook-5b0f2-default-rtdb.firebaseio.com";
+axios.defaults.baseURL = "https://phonebook-5b0f2-default-rtdb.firebaseio.com"; //users/{userId}/contacts.json?auth={idToken}
 
-export const fetchContacts = () => async (dispatch) => {
+export const fetchContacts = () => async (dispatch, getState) => {
   dispatch(getContactRequest());
+  const {
+    auth: { localId, idToken }, //state.auth.localId \ idToken
+  } = getState();
 
   try {
-    const { data } = await axios.get("/contacts.json");
-    dispatch(getContactSuccess(Object.keys(data).map((key) => ({ id: key, ...data[key] }))));
+    const { data } = await axios.get(`/users/${localId}/contacts.json?auth=${idToken}`);
+
+    dispatch(getContactSuccess(data ? Object.keys(data).map((key) => ({ id: key, ...data[key] })) : []));
   } catch (error) {
     dispatch(getContactError(error.message));
   }
 };
-export const addContact = (contact) => async (dispatch) => {
+export const addContact = (contact) => async (dispatch, getState) => {
   dispatch(addContactRequest());
+  const {
+    auth: { localId, idToken },
+  } = getState();
   try {
-    const { data } = await axios.post("/contacts.json", contact);
+    const { data } = await axios.post(`/users/${localId}/contacts.json?auth=${idToken}`, contact);
     dispatch(addContactSuccess({ id: data.name, ...contact }));
   } catch (error) {
     dispatch(addContactError(error.message));
   }
 };
 
-export const deleteContact = (id) => async (dispatch) => {
+export const deleteContact = (id) => async (dispatch, getState) => {
   dispatch(deleteContactRequest());
-
+  const {
+    auth: { localId, idToken },
+  } = getState();
   try {
-    await axios.delete(`/contacts/${id}.json`);
+    await axios.delete(`/users/${localId}/contacts/${id}.json?auth=${idToken}`);
     dispatch(deleteContactSuccess(id));
   } catch (error) {
     dispatch(deleteContactError(error.message));
