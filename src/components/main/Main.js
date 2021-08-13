@@ -10,7 +10,7 @@ import { MainContainer } from "./MainStyled";
 const Main = ({ isAuth }) => {
   return (
     <MainContainer>
-      <Suspense fallback={<h2>...loading</h2>}>
+      <Suspense fallback={<h2>...minions are working</h2>}>
         <Switch>
           {mainRoutes.map((route) =>
             route.isPrivate ? (

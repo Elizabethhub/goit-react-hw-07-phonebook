@@ -4,7 +4,6 @@ import { loginUserOperation, registerUserOperation } from "../../redux/auth/auth
 import { AuthContainer } from "./AuthStyled";
 import sprite from "../../images/icons/sprite.svg";
 import { withRouter } from "react-router-dom";
-import authReducer from "../../redux/auth/authReducer";
 
 class Auth extends Component {
   state = {
