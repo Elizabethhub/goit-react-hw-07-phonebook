@@ -1,22 +1,31 @@
 import { login, register } from "../../services/auth_api";
 // import { addUser } from "../users/usersActions";
-import { loginUser, registerUser } from "./authActions";
+import {
+  loginUserError,
+  loginUserRequest,
+  loginUserSuccess,
+  registerUserError,
+  registerUserRequest,
+  registerUserSuccess,
+} from "./authActions";
 
 const registerUserOperation = (user) => async (dispatch) => {
+  dispatch(registerUserRequest());
   try {
     const response = await register(user);
-    dispatch(registerUser(response.registerData));
+    dispatch(registerUserSuccess(response.registerData));
     // dispatch(addUser({ ...user, id: response.id }));
   } catch (error) {
-    console.log("error :>> ", error);
+    dispatch(registerUserError(error.message));
   }
 };
 const loginUserOperation = (user) => async (dispatch) => {
+  dispatch(loginUserRequest());
   try {
     const response = await login(user);
-    dispatch(loginUser(response.loginData));
+    dispatch(loginUserSuccess(response.loginData));
   } catch (error) {
-    console.log("error :>> ", error);
+    dispatch(loginUserError(error.message));
   }
 };
 

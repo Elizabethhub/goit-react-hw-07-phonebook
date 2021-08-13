@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  height: 60px;
+  height: 50px;
   background-color: #72728d;
   display: flex;
   align-items: center;

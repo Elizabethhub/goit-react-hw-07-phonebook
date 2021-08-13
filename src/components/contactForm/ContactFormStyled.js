@@ -10,6 +10,7 @@ export const ContactFormStyled = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     display: block;
+    background-color: lightgrey;
   }
   .btnAdd {
     display: block;
@@ -17,9 +18,15 @@ export const ContactFormStyled = styled.div`
     padding: 3px 5px;
     border-radius: 6px;
     cursor: pointer;
+    color: #fff;
     background-color: transparent;
     &:hover {
       background-color: cornflowerblue;
     }
+  }
+  .label {
+    /* background-color: lightgrey; */
+    font-weight: bold;
+    padding: 5px;
   }
 `;

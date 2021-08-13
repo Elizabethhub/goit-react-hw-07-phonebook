@@ -40,7 +40,7 @@ class ContactForm extends Component {
     return (
       <ContactFormStyled>
         <form onSubmit={this.onHandleSubmit}>
-          <label>
+          <label className="label">
             <AccessibilityNewIcon fontSize="small" style={{ color: "green" }} />
             Name
             <input

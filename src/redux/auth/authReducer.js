@@ -1,29 +1,65 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { loginUser, registerUser, signOut } from "./authActions";
+import { combineReducers, createReducer } from "@reduxjs/toolkit";
+// import { loginUser, registerUser, signOut } from "./authActions";
+import {
+  registerUserRequest,
+  registerUserSuccess,
+  registerUserError,
+  loginUserRequest,
+  loginUserSuccess,
+  loginUserError,
+  signOutRequest,
+  signOutSuccess,
+  signOutError,
+} from "./authActions";
 
-const authReducer = createReducer(
+const tokensReducer = createReducer(
   {
     idToken: "",
     refreshToken: "",
-    localId: "",
   },
   {
-    [registerUser]: (_, { payload }) => ({
+    [registerUserSuccess]: (_, { payload }) => ({
       idToken: payload.idToken,
       refreshToken: payload.refreshToken,
-      localId: payload.localId,
     }),
-    [loginUser]: (_, { payload }) => ({
+    [loginUserSuccess]: (_, { payload }) => ({
       idToken: payload.idToken,
       refreshToken: payload.refreshToken,
-      localId: payload.localId,
     }),
-    [signOut]: () => ({
+    [signOutSuccess]: () => ({
       idToken: "",
       refreshToken: "",
-      localId: "",
     }),
   }
 );
+const loading = createReducer(false, {
+  [registerUserRequest]: () => true,
+  [registerUserSuccess]: () => false,
+  [registerUserError]: () => false,
+  [loginUserRequest]: () => true,
+  [loginUserSuccess]: () => false,
+  [loginUserError]: () => false,
+  [signOutRequest]: () => true,
+  [signOutSuccess]: () => false,
+  [signOutError]: () => false,
+});
+
+const setError = (_, { payload }) => payload;
+const resetError = () => null;
+
+const error = createReducer(null, {
+  [registerUserRequest]: resetError,
+  [registerUserError]: setError,
+  [loginUserRequest]: resetError,
+  [loginUserError]: setError,
+  [signOutRequest]: resetError,
+  [signOutError]: setError,
+});
+
+const authReducer = combineReducers({
+  tokens: tokensReducer,
+  loading,
+  error,
+});
 
 export default authReducer;

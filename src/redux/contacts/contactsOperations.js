@@ -16,7 +16,10 @@ axios.defaults.baseURL = "https://phonebook-5b0f2-default-rtdb.firebaseio.com"; 
 export const fetchContacts = () => async (dispatch, getState) => {
   dispatch(getContactRequest());
   const {
-    auth: { localId, idToken }, //state.auth.localId \ idToken
+    auth: {
+      tokens: { idToken },
+    },
+    user: { localId }, //state.auth.localId \ idToken
   } = getState();
 
   try {
@@ -30,7 +33,10 @@ export const fetchContacts = () => async (dispatch, getState) => {
 export const addContact = (contact) => async (dispatch, getState) => {
   dispatch(addContactRequest());
   const {
-    auth: { localId, idToken },
+    auth: {
+      tokens: { idToken },
+    },
+    user: { localId },
   } = getState();
   try {
     const { data } = await axios.post(`/users/${localId}/contacts.json?auth=${idToken}`, contact);
@@ -43,7 +49,10 @@ export const addContact = (contact) => async (dispatch, getState) => {
 export const deleteContact = (id) => async (dispatch, getState) => {
   dispatch(deleteContactRequest());
   const {
-    auth: { localId, idToken },
+    auth: {
+      tokens: { idToken },
+    },
+    user: { localId },
   } = getState();
   try {
     await axios.delete(`/users/${localId}/contacts/${id}.json?auth=${idToken}`);

@@ -1,5 +1,5 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
-import { signOut } from "../auth/authActions";
+import { signOutSuccess } from "../auth/authActions";
 
 import { addUser, deleteUser, getAllUsers, resetError, setError, setFilter, setLoader } from "./usersActions";
 
@@ -7,12 +7,12 @@ const itemsReducer = createReducer([], {
   [getAllUsers]: (_, { payload }) => payload,
   [addUser]: (state, { payload }) => [...state, payload],
   [deleteUser]: (state, { payload }) => state.filter((item) => item.id !== payload),
-  [signOut]: () => [],
+  [signOutSuccess]: () => [],
 });
 
 const filterReducer = createReducer("", {
   [setFilter]: (_, { payload }) => payload,
-  [signOut]: () => "",
+  [signOutSuccess]: () => "",
 });
 const isLoadingReducer = createReducer(false, {
   [setLoader]: (state) => !state,
@@ -21,7 +21,7 @@ const isLoadingReducer = createReducer(false, {
 const errorReducer = createReducer("", {
   [setError]: (_, { payload }) => payload,
   [resetError]: () => "",
-  [signOut]: () => "",
+  [signOutSuccess]: () => "",
 });
 
 const usersReducer = combineReducers({

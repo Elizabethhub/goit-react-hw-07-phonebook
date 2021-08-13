@@ -1,17 +1,24 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { loginUser, registerUser, signOut } from "../auth/authActions";
+import {
+  loginUser,
+  loginUserSuccess,
+  registerUser,
+  registerUserSuccess,
+  signOut,
+  signOutSuccess,
+} from "../auth/authActions";
 
 export const userReducer = createReducer(
   { email: "", localId: "" },
   {
-    [registerUser]: (_, { payload }) => ({
+    [registerUserSuccess]: (_, { payload }) => ({
       email: payload.email,
       localId: payload.localId,
     }),
-    [loginUser]: (_, { payload }) => ({
+    [loginUserSuccess]: (_, { payload }) => ({
       email: payload.email,
       localId: payload.localId,
     }),
-    [signOut]: () => ({ email: "", localId: "" }),
+    [signOutSuccess]: () => ({ email: "", localId: "" }),
   }
 );

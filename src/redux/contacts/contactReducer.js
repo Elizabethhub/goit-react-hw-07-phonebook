@@ -1,5 +1,5 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { signOut } from "../auth/authActions";
+import { signOutSuccess } from "../auth/authActions";
 import {
   addContactError,
   addContactRequest,
@@ -17,7 +17,7 @@ export const items = createReducer([], {
   [getContactSuccess]: (_, { payload }) => [...payload],
   [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) => state.filter((item) => item.id !== payload),
-  [signOut]: () => [],
+  [signOutSuccess]: () => [],
 });
 
 // const contactItemReducer = createReducer([], {
