@@ -18,7 +18,7 @@ const register = async (user) => {
       // id: addUserToDB.data.name
     };
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 const login = async (user) => {

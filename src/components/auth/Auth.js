@@ -4,12 +4,21 @@ import { loginUserOperation, registerUserOperation } from "../../redux/auth/auth
 import { AuthContainer } from "./AuthStyled";
 import sprite from "../../images/icons/sprite.svg";
 import { withRouter } from "react-router-dom";
+import authReducer from "../../redux/auth/authReducer";
 
 class Auth extends Component {
   state = {
     email: "",
     password: "",
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.error !== prevProps.error) {
+      if (this.props.error === "Request failed with status code 400") {
+        return alert(`${this.state.email} is already exists in the Phonebook`);
+      }
+    }
+  }
 
   onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -70,4 +79,8 @@ class Auth extends Component {
   }
 }
 
-export default connect(null, { registerUserOperation, loginUserOperation })(withRouter(Auth));
+const mapStateToProps = (state) => ({
+  error: state.auth.error,
+});
+
+export default connect(mapStateToProps, { registerUserOperation, loginUserOperation })(withRouter(Auth));
