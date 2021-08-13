@@ -19,6 +19,7 @@ export const ContactFormStyled = styled.div`
     border-radius: 6px;
     cursor: pointer;
     color: #fff;
+    font-weight: bold;
     background-color: transparent;
     &:hover {
       background-color: cornflowerblue;

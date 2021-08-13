@@ -6,5 +6,6 @@ export const FilterStyled = styled.div`
     margin-top: 15px;
     margin-bottom: 15px;
     display: block;
+    background-color: lightgrey;
   }
 `;

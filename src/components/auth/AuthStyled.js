@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const AuthContainer = styled.div`
+  /* display: "flex";*/
+  /* align-items: "center"; */
+  /* justify-content: "center"; */
+  /* margin: 0 auto; */
+
+  margin-top: 50px;
   .user-form {
     display: flex;
     flex-direction: column;

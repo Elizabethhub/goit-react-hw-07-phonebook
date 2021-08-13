@@ -13,7 +13,7 @@ export const mainRoutes = [
   {
     name: "About",
     path: "/about",
-    component: () => <h2>AboutPage</h2>,
+    component: lazy(() => import("../pages/AboutPage") /* webpackChunkName: "AboutPage" */),
     exact: true,
     isPrivate: false,
     restricted: false,
